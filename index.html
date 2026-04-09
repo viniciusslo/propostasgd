@@ -6,17 +6,17 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="theme-color" content="#FAFAF7">
-  <title>Proposta Claude · Fidens</title>
+  <title>Fluência em IA · Fidens</title>
 
   <!-- OpenGraph -->
-  <meta property="og:title" content="Proposta Claude · Fidens">
-  <meta property="og:description" content="Um mês para instalar mindset AI-first no time executivo da Fidens.">
+  <meta property="og:title" content="Fluência em IA · Fidens">
+  <meta property="og:description" content="Fluência em IA para Liderança — baseado no curso AI Fluency: Framework & Foundations da Anthropic.">
   <meta property="og:type" content="website">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Proposta Claude · Fidens">
-  <meta name="twitter:description" content="Um mês para instalar mindset AI-first no time executivo da Fidens.">
+  <meta name="twitter:title" content="Fluência em IA · Fidens">
+  <meta name="twitter:description" content="Fluência em IA para Liderança — baseado no curso AI Fluency: Framework & Foundations da Anthropic.">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -370,6 +370,38 @@
       .price { font-size: 2.4rem; }
     }
 
+    /* ── Pull quote (slide 2) ── */
+    .moment-body {
+      display: flex;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: flex-start;
+      margin-bottom: clamp(1.5rem, 4vh, 2.5rem);
+    }
+    .moment-body > p { flex: 1 1 auto; max-width: 620px; }
+    .pull-quote {
+      flex: 0 1 380px;
+      font-size: clamp(1.05rem, 1.8vw, 1.45rem);
+      font-weight: 600;
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+      padding-left: clamp(1rem, 2vw, 1.5rem);
+      border-left: 2px solid var(--accent);
+    }
+    @media (max-width: 780px) {
+      .moment-body { flex-direction: column; gap: 1.25rem; }
+      .pull-quote { flex: none; max-width: none; }
+    }
+
+    .source-line {
+      font-size: 0.66rem;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      margin-top: clamp(0.75rem, 2vh, 1.25rem);
+    }
+
     /* ── Logo wordmark ── */
     .logo-wordmark {
       font-size: 0.82rem;
@@ -440,10 +472,10 @@
       Proposta de Piloto GenDoc
     </p>
     <h1 class="display fade-up d3" style="color:var(--ink); margin-bottom:clamp(1rem,2.5vh,1.5rem);">
-      Claude para<br>Liderança Fidens
+      Fluência em IA<br>para Liderança
     </h1>
-    <p class="fade-up d4" style="font-size:clamp(1rem,1.8vw,1.3rem); color:var(--subtle); font-weight:400; line-height:1.55; max-width:480px;">
-      Um mês para instalar mindset AI-first<br>no time executivo
+    <p class="fade-up d4" style="font-size:clamp(1rem,1.8vw,1.3rem); color:var(--subtle); font-weight:400; line-height:1.55; max-width:540px;">
+      Baseado no curso <em style="font-style:italic;">AI Fluency: Framework &amp; Foundations</em> da Anthropic
     </p>
   </div>
 
@@ -476,9 +508,14 @@
       O gargalo não é mais a tecnologia.<br>É a implementação.
     </h2>
 
-    <p class="body-lg fade-up d3" style="color:var(--subtle); max-width:620px; margin-bottom:clamp(1.5rem,4vh,2.5rem);">
-      A tecnologia existe, está madura e acessível. O que separa empresas que capturam ganho exponencial de IA das que não capturam é a capacidade de levar isso para o workflow real dos executivos. A camada de gestão é onde o ROI começa: mão de obra cara, tempo escasso, decisões de alto impacto.
-    </p>
+    <div class="moment-body fade-up d3">
+      <p class="body-lg" style="color:var(--subtle);">
+        A tecnologia existe, está madura e acessível. O que separa empresas que capturam ganho exponencial de IA das que não capturam é a capacidade de levar isso para o workflow real dos executivos. A camada de gestão é onde o ROI começa: mão de obra cara, tempo escasso, decisões de alto impacto.
+      </p>
+      <blockquote class="pull-quote">
+        &ldquo;Se IA não economiza custo nem aumenta receita, ainda é hobby.&rdquo;
+      </blockquote>
+    </div>
 
     <div class="rule fade-up d3" style="margin-bottom:clamp(1.25rem,3vh,2rem);"></div>
 
@@ -496,6 +533,10 @@
         <p class="body-sm" style="color:var(--ink); font-weight:500;">Hands-on com casos reais gera 66% mais produtividade que treinamento conceitual.</p>
       </div>
     </div>
+
+    <p class="source-line fade-up d5">
+      Dados: State of AI Agents 2026, Anthropic&nbsp;·&nbsp;Wharton&nbsp;·&nbsp;BCG.
+    </p>
   </div>
 
   <div class="accent-bar fade-up d5"></div>
@@ -517,8 +558,8 @@
   </div>
 
   <div style="width:100%;">
-    <h2 class="title fade-up d2" style="margin-bottom:clamp(1.5rem,4vh,2.75rem); max-width:680px;">
-      Quatro etapas, um mês,<br>um time pronto para pensar AI-first
+    <h2 class="title fade-up d2" style="margin-bottom:clamp(1.5rem,4vh,2.75rem); max-width:720px;">
+      Quatro etapas, um mês,<br>uma liderança fluente em IA
     </h2>
 
     <div class="steps-grid">
@@ -527,7 +568,7 @@
         <div class="rule" style="margin:0.75rem 0;"></div>
         <p class="label" style="color:var(--accent); margin-bottom:0.25rem;">Discovery</p>
         <p class="label" style="color:var(--muted); margin-bottom:0.65rem; font-size:0.62rem;">Semana 1</p>
-        <p class="body-sm" style="color:var(--subtle);">Sessão em grupo de 1h com os executivos, mapeamento de workflows, ferramentas e pontos de fricção. Saída: mapa de oportunidades priorizado.</p>
+        <p class="body-sm" style="color:var(--subtle);">Sessão em grupo de 1h com os executivos, mapeamento de workflows, ferramentas e oportunidades de automação. Saída: mapa de oportunidades priorizado.</p>
       </div>
 
       <div class="fade-up d3">
@@ -535,7 +576,7 @@
         <div class="rule" style="margin:0.75rem 0;"></div>
         <p class="label" style="color:var(--accent); margin-bottom:0.25rem;">Preparação customizada</p>
         <p class="label" style="color:var(--muted); margin-bottom:0.65rem; font-size:0.62rem;">Entre o discovery e o workshop</p>
-        <p class="body-sm" style="color:var(--subtle);">Desenho de casos reais extraídos do dia a dia do grupo, skills-semente pré-construídas e ambientes Claude individuais prontos.</p>
+        <p class="body-sm" style="color:var(--subtle);">Desenho de casos reais extraídos do dia a dia do grupo, skills de exemplo pré-construídas e vídeo preparatório para o workshop.</p>
       </div>
 
       <div class="fade-up d4">
@@ -543,7 +584,7 @@
         <div class="rule" style="margin:0.75rem 0;"></div>
         <p class="label" style="color:var(--accent); margin-bottom:0.25rem;">Workshop de ignição</p>
         <p class="label" style="color:var(--muted); margin-bottom:0.65rem; font-size:0.62rem;">Semana 2</p>
-        <p class="body-sm" style="color:var(--subtle);">Sessão única de 2h, em grupo, 70% hands-on. Fundamentos de Claude, Cowork, Skills, Plugins e MCPs explicados sem jargão, com laboratório de casos reais de cada executivo.</p>
+        <p class="body-sm" style="color:var(--subtle);">Sessão única de 2h, em grupo, com foco na prática. Fundamentos de Claude, boas práticas, Cowork, Skills, Plugins e integrações. Passo a passo de construção de casos reais.</p>
       </div>
 
       <div class="fade-up d5">
@@ -551,7 +592,7 @@
         <div class="rule" style="margin:0.75rem 0;"></div>
         <p class="label" style="color:var(--accent); margin-bottom:0.25rem;">Touch points semanais</p>
         <p class="label" style="color:var(--muted); margin-bottom:0.65rem; font-size:0.62rem;">Semanas 3 a 6</p>
-        <p class="body-sm" style="color:var(--subtle);">Quatro encontros de 1h em grupo para aprofundar Skills, MCPs e integrações, desbloquear uso real e consolidar o mindset. Suporte async via WhatsApp com SLA de 24h úteis durante todo o mês.</p>
+        <p class="body-sm" style="color:var(--subtle);">Quatro encontros de 1h em grupo para aprofundar Skills, MCPs, integrações e desbloquear uso real. É o acompanhamento que transforma curiosidade em hábito.</p>
       </div>
     </div>
   </div>
@@ -582,12 +623,12 @@
     <div class="outcomes-grid fade-up d3" style="margin-bottom:clamp(1.5rem,4vh,2.5rem);">
       <div>
         <div class="accent-bar" style="margin-bottom:1rem;"></div>
-        <h3 style="font-size:0.95rem; font-weight:600; color:var(--ink); margin-bottom:0.5rem;">Claude ativo no dia a dia</h3>
+        <h3 style="font-size:0.95rem; font-weight:600; color:var(--ink); margin-bottom:0.5rem;">Uso ativo do Claude Code e Cowork</h3>
         <p class="body-sm" style="color:var(--subtle);">Ambiente configurado, skills customizadas funcionando e pelo menos uma automação real do próprio trabalho rodando já no dia do workshop.</p>
       </div>
       <div>
         <div class="accent-bar" style="margin-bottom:1rem;"></div>
-        <h3 style="font-size:0.95rem; font-weight:600; color:var(--ink); margin-bottom:0.5rem;">Um experimento de 30 dias</h3>
+        <h3 style="font-size:0.95rem; font-weight:600; color:var(--ink); margin-bottom:0.5rem;">Uma experiência de 30 dias</h3>
         <p class="body-sm" style="color:var(--subtle);">Um hábito-âncora definido e acompanhado semanalmente, para a IA deixar de ser curiosidade e virar reflexo.</p>
       </div>
       <div>
@@ -641,9 +682,9 @@
     <div class="invest-grid">
       <!-- Left -->
       <div>
-        <p class="price fade-up d2">R$&nbsp;9.230</p>
+        <p class="price fade-up d2">R$&nbsp;9.530</p>
         <p class="fade-up d3" style="font-size:0.9rem; color:var(--subtle); margin-top:0.6rem; margin-bottom:clamp(1.25rem,3vh,2rem);">
-          Piloto completo de 1 mês&nbsp;&nbsp;·&nbsp;&nbsp;4 a 5 executivos&nbsp;&nbsp;·&nbsp;&nbsp;~R$&nbsp;2.050 por líder
+          Piloto completo de 1 mês&nbsp;&nbsp;·&nbsp;&nbsp;4 a 5 executivos&nbsp;&nbsp;·&nbsp;&nbsp;~R$&nbsp;2.120 por líder
         </p>
 
         <div class="rule fade-up d3" style="margin-bottom:clamp(1rem,2.5vh,1.5rem);"></div>
@@ -656,11 +697,15 @@
         </div>
       </div>
 
-      <!-- Right: Contato -->
+      <!-- Right: Preço-piloto -->
       <div class="cta-panel fade-up d4">
-        <p class="label" style="color:var(--accent); margin-bottom:1rem;">Contato</p>
-        <p style="font-size:clamp(1.1rem,1.8vw,1.4rem); font-weight:700; color:var(--ink); line-height:1.3; margin-bottom:0.25rem;">Vinícius</p>
-        <p style="font-size:0.9rem; color:var(--subtle);">GenDocAI</p>
+        <p class="label" style="color:var(--accent); margin-bottom:1rem;">Preço-piloto</p>
+        <p style="font-size:clamp(0.95rem,1.5vw,1.1rem); font-weight:600; color:var(--ink); line-height:1.5; margin-bottom:clamp(0.75rem,2vh,1.1rem);">
+          Este valor é exclusivo para o grupo-piloto de até 5 executivos.
+        </p>
+        <p class="body-sm" style="color:var(--subtle); line-height:1.6;">
+          Turmas futuras e escalas maiores são precificadas caso a caso, considerando formato, profundidade do acompanhamento e número de participantes.
+        </p>
       </div>
     </div>
   </div>
