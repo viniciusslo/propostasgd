@@ -22,53 +22,49 @@
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'canvas': '#FAFAF7',
-            'ink':    '#0A0A0A',
-            'accent': '#C2410C',
-            'subtle': '#6B6B6B',
-            'muted':  '#A8A8A0',
-            'rule':   '#E4E4DE',
-            'panel':  '#F0F0EB',
-          },
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-          },
-        }
-      }
-    }
-  </script>
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --accent:   #4338CA;   /* GenDoc indigo */
+      --cyan:     #06B6D4;
+      --green:    #34D399;
+      --canvas:   #FAFAF7;
+      --ink:      #0A0A0A;
+      --subtle:   #6B6B6B;
+      --muted:    #A8A8A0;
+      --rule:     #E4E4DE;
+      --panel:    #F0F0EB;
     }
 
+    /* ── Scroll: horizontal ── */
     html {
-      scroll-snap-type: y mandatory;
-      overflow-y: scroll;
+      scroll-snap-type: x mandatory;
+      overflow-x: scroll;
+      overflow-y: hidden;
       scroll-behavior: smooth;
-      background: #FAFAF7;
+      background: var(--canvas);
     }
 
     body {
+      display: flex;
+      flex-direction: row;
+      min-height: 100svh;
       font-family: 'Inter', system-ui, sans-serif;
-      background: #FAFAF7;
-      color: #0A0A0A;
+      background: var(--canvas);
+      color: var(--ink);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
     /* ── Slides ── */
     .slide {
+      width: 100vw;
       height: 100svh;
       min-height: 560px;
+      flex-shrink: 0;
       scroll-snap-align: start;
       scroll-snap-stop: always;
       display: flex;
@@ -82,7 +78,7 @@
     /* ── Animation ── */
     .fade-up {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(18px);
       transition: opacity 0.65s var(--ease-out), transform 0.65s var(--ease-out);
     }
     .fade-up.in { opacity: 1; transform: translateY(0); }
@@ -101,43 +97,38 @@
       letter-spacing: 0.13em;
       text-transform: uppercase;
     }
-
     .display {
       font-size: clamp(2.6rem, 6.5vw, 6rem);
       font-weight: 800;
       letter-spacing: -0.035em;
       line-height: 1.04;
     }
-
     .headline {
       font-size: clamp(1.75rem, 4vw, 3.6rem);
       font-weight: 700;
       letter-spacing: -0.03em;
       line-height: 1.1;
     }
-
     .title {
       font-size: clamp(1.35rem, 2.8vw, 2.6rem);
       font-weight: 700;
       letter-spacing: -0.025em;
       line-height: 1.15;
     }
-
     .body-lg {
       font-size: clamp(0.9rem, 1.4vw, 1.08rem);
       line-height: 1.72;
     }
-
     .body-sm {
       font-size: clamp(0.8rem, 1.1vw, 0.92rem);
       line-height: 1.65;
     }
 
-    /* ── Accent rule ── */
+    /* ── Accent bar ── */
     .accent-bar {
       width: 28px;
       height: 2px;
-      background: #C2410C;
+      background: var(--accent);
       flex-shrink: 0;
     }
 
@@ -151,65 +142,57 @@
     }
 
     /* ── Divider ── */
-    .rule { height: 1px; background: #E4E4DE; width: 100%; }
+    .rule { height: 1px; background: var(--rule); width: 100%; }
 
-    /* ── Nav dots ── */
+    /* ── Nav dots — horizontal, bottom center ── */
     #nav-dots {
       position: fixed;
-      right: 1.4rem;
-      top: 50%;
-      transform: translateY(-50%);
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
       z-index: 100;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       gap: 6px;
       align-items: center;
     }
     .dot {
+      height: 4px;
       width: 4px;
       border-radius: 9px;
       background: #C8C8C0;
       cursor: pointer;
-      transition: height 0.3s var(--ease-out), background 0.3s ease;
-      height: 4px;
+      transition: width 0.3s var(--ease-out), background 0.3s ease;
       border: none;
       outline: none;
     }
-    .dot:focus-visible { outline: 2px solid #C2410C; outline-offset: 2px; }
-    .dot.active { height: 22px; background: #C2410C; }
+    .dot:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .dot.active { width: 22px; background: var(--accent); }
 
-    /* ── Price display ── */
+    /* ── Price ── */
     .price {
       font-size: clamp(3rem, 8vw, 7rem);
       font-weight: 800;
       letter-spacing: -0.04em;
       line-height: 1;
-      color: #C2410C;
+      color: var(--accent);
     }
 
-    /* ── Slide 1 specific ── */
-    #slide-0 .bg-line {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 1px;
-      background: #E4E4DE;
-    }
-
-    /* ── Panel (slide 5 cta) ── */
+    /* ── CTA panel ── */
     .cta-panel {
-      background: #F0F0EB;
-      border-left: 2px solid #C2410C;
-      padding: clamp(1.25rem, 3vw, 2rem) clamp(1.25rem, 3vw, 2rem);
+      background: var(--panel);
+      border-left: 2px solid var(--accent);
+      padding: clamp(1.25rem, 3vw, 2rem);
     }
 
-    /* ── Metrics row ── */
+    /* ── Metric items ── */
     .metric-item {
       font-size: 0.8rem;
-      color: #6B6B6B;
+      color: var(--subtle);
       white-space: nowrap;
     }
 
-    /* ── Responsive grid helpers ── */
+    /* ── Responsive grids ── */
     .steps-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -217,11 +200,6 @@
     }
     @media (max-width: 900px) {
       .steps-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-    }
-    @media (max-width: 540px) {
-      .steps-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
-      .dot { display: none; }
-      #nav-dots { display: none; }
     }
 
     .outcomes-grid {
@@ -251,11 +229,25 @@
     @media (max-width: 640px) {
       .stats-grid { grid-template-columns: 1fr; gap: 1rem; }
     }
+
+    @media (max-width: 480px) {
+      #nav-dots { display: none; }
+    }
+
+    /* ── Logo wordmark ── */
+    .logo-wordmark {
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .logo-wordmark span { color: #7C3AED; }
   </style>
 </head>
 <body>
 
-<!-- Navigation dots -->
+<!-- ── Navigation dots ── -->
 <nav id="nav-dots" aria-label="Navegação por slides">
   <button class="dot active" data-index="0" aria-label="Slide 1"></button>
   <button class="dot" data-index="1" aria-label="Slide 2"></button>
@@ -265,25 +257,56 @@
 </nav>
 
 <!-- ══════════════════════════════════════
+     Inline SVG defs (reusable logo pieces)
+══════════════════════════════════════ -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="gd-icon" viewBox="0 0 32 34" fill="none">
+    <!-- top diamond: indigo -->
+    <path d="M16 2 L30 10 L16 18 L2 10 Z" fill="white" stroke="#4338CA" stroke-width="2.4" stroke-linejoin="round"/>
+    <!-- middle diamond: cyan -->
+    <path d="M16 10 L30 18 L16 26 L2 18 Z" fill="white" stroke="#06B6D4" stroke-width="2.4" stroke-linejoin="round"/>
+    <!-- bottom diamond: green -->
+    <path d="M16 18 L30 26 L16 34 L2 26 Z" fill="white" stroke="#34D399" stroke-width="2.4" stroke-linejoin="round"/>
+  </symbol>
+</svg>
+
+
+<!-- ══════════════════════════════════════
      SLIDE 1 — Capa
 ══════════════════════════════════════ -->
 <section class="slide" id="slide-0" aria-label="Capa">
 
-  <!-- Header -->
+  <!-- Header: small logo top-left -->
   <div class="flex items-center justify-between">
-    <span class="label fade-up" style="color:#A8A8A0;">GenDoc</span>
+    <div class="fade-up flex items-center gap-2">
+      <svg width="20" height="21" aria-hidden="true"><use href="#gd-icon"/></svg>
+      <span class="logo-wordmark">GenDoc<span>AI</span></span>
+    </div>
     <span class="label fade-up d1" style="color:#C8C8C0;">01 / 05</span>
   </div>
 
-  <!-- Main content -->
+  <!-- Main: prominent logo + title -->
   <div>
-    <p class="label fade-up d2" style="color:#C2410C; margin-bottom:clamp(1.25rem,3vh,2rem);">
+    <!-- Large logomark on cover -->
+    <div class="fade-up d1" style="display:flex; align-items:center; gap:1rem; margin-bottom:clamp(1.75rem,4vh,2.75rem);">
+      <svg width="52" height="55" aria-label="GenDocAI">
+        <use href="#gd-icon"/>
+      </svg>
+      <div>
+        <div style="font-size:clamp(1.4rem,2.5vw,2rem); font-weight:800; letter-spacing:-0.03em; color:var(--ink); line-height:1.1;">
+          GenDoc<span style="color:#7C3AED;">AI</span>
+        </div>
+        <div style="font-size:0.72rem; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-top:0.2rem;">Para Fidens</div>
+      </div>
+    </div>
+
+    <p class="label fade-up d2" style="color:var(--accent); margin-bottom:clamp(1.25rem,3vh,2rem);">
       Proposta de Piloto GenDoc
     </p>
-    <h1 class="display fade-up d3" style="color:#0A0A0A; margin-bottom:clamp(1rem,2.5vh,1.5rem);">
+    <h1 class="display fade-up d3" style="color:var(--ink); margin-bottom:clamp(1rem,2.5vh,1.5rem);">
       Claude para<br>Liderança Fidens
     </h1>
-    <p class="fade-up d4" style="font-size:clamp(1rem,1.8vw,1.3rem); color:#6B6B6B; font-weight:400; line-height:1.55; max-width:480px;">
+    <p class="fade-up d4" style="font-size:clamp(1rem,1.8vw,1.3rem); color:var(--subtle); font-weight:400; line-height:1.55; max-width:480px;">
       Um mês para instalar mindset AI-first<br>no time executivo
     </p>
   </div>
@@ -291,7 +314,7 @@
   <!-- Footer -->
   <div class="flex items-center justify-between">
     <div class="accent-bar fade-up d5"></div>
-    <p class="label fade-up d5" style="color:#A8A8A0;">
+    <p class="label fade-up d5" style="color:var(--muted);">
       Preparado para Fidens&nbsp;&nbsp;·&nbsp;&nbsp;Abril de 2026
     </p>
   </div>
@@ -305,7 +328,10 @@
 <section class="slide" id="slide-1" aria-label="O momento">
 
   <div class="flex items-center justify-between">
-    <span class="label fade-up" style="color:#A8A8A0;">GenDoc</span>
+    <div class="fade-up flex items-center gap-2">
+      <svg width="20" height="21" aria-hidden="true"><use href="#gd-icon"/></svg>
+      <span class="logo-wordmark">GenDoc<span>AI</span></span>
+    </div>
     <span class="label fade-up d1" style="color:#C8C8C0;">02 / 05</span>
   </div>
 
@@ -314,7 +340,7 @@
       O gargalo não é mais a tecnologia.<br>É a implementação.
     </h2>
 
-    <p class="body-lg fade-up d3" style="color:#6B6B6B; max-width:620px; margin-bottom:clamp(1.5rem,4vh,2.5rem);">
+    <p class="body-lg fade-up d3" style="color:var(--subtle); max-width:620px; margin-bottom:clamp(1.5rem,4vh,2.5rem);">
       A tecnologia existe, está madura e acessível. O que separa empresas que capturam ganho exponencial de IA das que não capturam é a capacidade de levar isso para o workflow real dos executivos. A camada de gestão é onde o ROI começa: mão de obra cara, tempo escasso, decisões de alto impacto.
     </p>
 
@@ -322,16 +348,16 @@
 
     <div class="stats-grid fade-up d4">
       <div>
-        <p class="label" style="color:#C2410C; margin-bottom:0.6rem;">Dado 01</p>
-        <p class="body-sm" style="color:#0A0A0A; font-weight:500;">70% dos fracassos de adoção são comportamentais, não técnicos.</p>
+        <p class="label" style="color:var(--accent); margin-bottom:0.6rem;">Dado 01</p>
+        <p class="body-sm" style="color:var(--ink); font-weight:500;">70% dos fracassos de adoção são comportamentais, não técnicos.</p>
       </div>
       <div>
-        <p class="label" style="color:#C2410C; margin-bottom:0.6rem;">Dado 02</p>
-        <p class="body-sm" style="color:#0A0A0A; font-weight:500;">Líderes que praticam IA com acompanhamento mantêm o hábito 6 meses depois; sozinhos, abandonam em 4 semanas.</p>
+        <p class="label" style="color:var(--accent); margin-bottom:0.6rem;">Dado 02</p>
+        <p class="body-sm" style="color:var(--ink); font-weight:500;">Líderes que praticam IA com acompanhamento mantêm o hábito 6 meses depois; sozinhos, abandonam em 4 semanas.</p>
       </div>
       <div>
-        <p class="label" style="color:#C2410C; margin-bottom:0.6rem;">Dado 03</p>
-        <p class="body-sm" style="color:#0A0A0A; font-weight:500;">Hands-on com casos reais gera 66% mais produtividade que treinamento conceitual.</p>
+        <p class="label" style="color:var(--accent); margin-bottom:0.6rem;">Dado 03</p>
+        <p class="body-sm" style="color:var(--ink); font-weight:500;">Hands-on com casos reais gera 66% mais produtividade que treinamento conceitual.</p>
       </div>
     </div>
   </div>
@@ -347,7 +373,10 @@
 <section class="slide" id="slide-2" aria-label="A proposta em 4 etapas">
 
   <div class="flex items-center justify-between">
-    <span class="label fade-up" style="color:#A8A8A0;">GenDoc</span>
+    <div class="fade-up flex items-center gap-2">
+      <svg width="20" height="21" aria-hidden="true"><use href="#gd-icon"/></svg>
+      <span class="logo-wordmark">GenDoc<span>AI</span></span>
+    </div>
     <span class="label fade-up d1" style="color:#C8C8C0;">03 / 05</span>
   </div>
 
@@ -357,40 +386,36 @@
     </h2>
 
     <div class="steps-grid">
-      <!-- 01 -->
       <div class="fade-up d2">
         <p class="step-num">01</p>
         <div class="rule" style="margin:0.75rem 0;"></div>
-        <p class="label" style="color:#C2410C; margin-bottom:0.25rem;">Discovery</p>
-        <p class="label" style="color:#A8A8A0; margin-bottom:0.65rem; font-size:0.62rem;">Semana 1</p>
-        <p class="body-sm" style="color:#6B6B6B;">Entrevistas 1:1 de 1h com cada executivo, mapeamento de workflows, ferramentas e pontos de fricção. Saída: mapa de oportunidades priorizado por pessoa.</p>
+        <p class="label" style="color:var(--accent); margin-bottom:0.25rem;">Discovery</p>
+        <p class="label" style="color:var(--muted); margin-bottom:0.65rem; font-size:0.62rem;">Semana 1</p>
+        <p class="body-sm" style="color:var(--subtle);">Entrevistas 1:1 de 1h com cada executivo, mapeamento de workflows, ferramentas e pontos de fricção. Saída: mapa de oportunidades priorizado por pessoa.</p>
       </div>
 
-      <!-- 02 -->
       <div class="fade-up d3">
         <p class="step-num">02</p>
         <div class="rule" style="margin:0.75rem 0;"></div>
-        <p class="label" style="color:#C2410C; margin-bottom:0.25rem;">Preparação customizada</p>
-        <p class="label" style="color:#A8A8A0; margin-bottom:0.65rem; font-size:0.62rem;">Entre o discovery e o workshop</p>
-        <p class="body-sm" style="color:#6B6B6B;">Desenho de casos reais extraídos do dia a dia do grupo, skills-semente pré-construídas e ambientes Claude individuais prontos.</p>
+        <p class="label" style="color:var(--accent); margin-bottom:0.25rem;">Preparação customizada</p>
+        <p class="label" style="color:var(--muted); margin-bottom:0.65rem; font-size:0.62rem;">Entre o discovery e o workshop</p>
+        <p class="body-sm" style="color:var(--subtle);">Desenho de casos reais extraídos do dia a dia do grupo, skills-semente pré-construídas e ambientes Claude individuais prontos.</p>
       </div>
 
-      <!-- 03 -->
       <div class="fade-up d4">
         <p class="step-num">03</p>
         <div class="rule" style="margin:0.75rem 0;"></div>
-        <p class="label" style="color:#C2410C; margin-bottom:0.25rem;">Workshop de ignição</p>
-        <p class="label" style="color:#A8A8A0; margin-bottom:0.65rem; font-size:0.62rem;">Semana 2</p>
-        <p class="body-sm" style="color:#6B6B6B;">Sessão única de 2h, em grupo, 70% hands-on. Fundamentos de Claude, Cowork, Skills, Plugins e MCPs explicados sem jargão, com laboratório de casos reais de cada executivo.</p>
+        <p class="label" style="color:var(--accent); margin-bottom:0.25rem;">Workshop de ignição</p>
+        <p class="label" style="color:var(--muted); margin-bottom:0.65rem; font-size:0.62rem;">Semana 2</p>
+        <p class="body-sm" style="color:var(--subtle);">Sessão única de 2h, em grupo, 70% hands-on. Fundamentos de Claude, Cowork, Skills, Plugins e MCPs explicados sem jargão, com laboratório de casos reais de cada executivo.</p>
       </div>
 
-      <!-- 04 -->
       <div class="fade-up d5">
         <p class="step-num">04</p>
         <div class="rule" style="margin:0.75rem 0;"></div>
-        <p class="label" style="color:#C2410C; margin-bottom:0.25rem;">Touch points semanais</p>
-        <p class="label" style="color:#A8A8A0; margin-bottom:0.65rem; font-size:0.62rem;">Semanas 3 a 6</p>
-        <p class="body-sm" style="color:#6B6B6B;">Quatro encontros de 1h em grupo para aprofundar Skills, MCPs e integrações, desbloquear uso real e consolidar o mindset. Suporte async via WhatsApp com SLA de 24h úteis durante todo o mês.</p>
+        <p class="label" style="color:var(--accent); margin-bottom:0.25rem;">Touch points semanais</p>
+        <p class="label" style="color:var(--muted); margin-bottom:0.65rem; font-size:0.62rem;">Semanas 3 a 6</p>
+        <p class="body-sm" style="color:var(--subtle);">Quatro encontros de 1h em grupo para aprofundar Skills, MCPs e integrações, desbloquear uso real e consolidar o mindset. Suporte async via WhatsApp com SLA de 24h úteis durante todo o mês.</p>
       </div>
     </div>
   </div>
@@ -406,7 +431,10 @@
 <section class="slide" id="slide-3" aria-label="Do workshop ao hábito">
 
   <div class="flex items-center justify-between">
-    <span class="label fade-up" style="color:#A8A8A0;">GenDoc</span>
+    <div class="fade-up flex items-center gap-2">
+      <svg width="20" height="21" aria-hidden="true"><use href="#gd-icon"/></svg>
+      <span class="logo-wordmark">GenDoc<span>AI</span></span>
+    </div>
     <span class="label fade-up d1" style="color:#C8C8C0;">04 / 05</span>
   </div>
 
@@ -418,25 +446,25 @@
     <div class="outcomes-grid fade-up d3" style="margin-bottom:clamp(1.5rem,4vh,2.5rem);">
       <div>
         <div class="accent-bar" style="margin-bottom:1rem;"></div>
-        <h3 style="font-size:0.95rem; font-weight:600; color:#0A0A0A; margin-bottom:0.5rem;">Claude ativo no dia a dia</h3>
-        <p class="body-sm" style="color:#6B6B6B;">Ambiente configurado, skills customizadas funcionando e pelo menos uma automação real do próprio trabalho rodando já no dia do workshop.</p>
+        <h3 style="font-size:0.95rem; font-weight:600; color:var(--ink); margin-bottom:0.5rem;">Claude ativo no dia a dia</h3>
+        <p class="body-sm" style="color:var(--subtle);">Ambiente configurado, skills customizadas funcionando e pelo menos uma automação real do próprio trabalho rodando já no dia do workshop.</p>
       </div>
       <div>
         <div class="accent-bar" style="margin-bottom:1rem;"></div>
-        <h3 style="font-size:0.95rem; font-weight:600; color:#0A0A0A; margin-bottom:0.5rem;">Um experimento de 30 dias</h3>
-        <p class="body-sm" style="color:#6B6B6B;">Um hábito-âncora definido e acompanhado semanalmente, para a IA deixar de ser curiosidade e virar reflexo.</p>
+        <h3 style="font-size:0.95rem; font-weight:600; color:var(--ink); margin-bottom:0.5rem;">Um experimento de 30 dias</h3>
+        <p class="body-sm" style="color:var(--subtle);">Um hábito-âncora definido e acompanhado semanalmente, para a IA deixar de ser curiosidade e virar reflexo.</p>
       </div>
       <div>
         <div class="accent-bar" style="margin-bottom:1rem;"></div>
-        <h3 style="font-size:0.95rem; font-weight:600; color:#0A0A0A; margin-bottom:0.5rem;">Canal de suporte contínuo</h3>
-        <p class="body-sm" style="color:#6B6B6B;">Touch points semanais em grupo e WhatsApp direto para resolver bloqueios no momento em que aparecem.</p>
+        <h3 style="font-size:0.95rem; font-weight:600; color:var(--ink); margin-bottom:0.5rem;">Canal de suporte contínuo</h3>
+        <p class="body-sm" style="color:var(--subtle);">Touch points semanais em grupo e WhatsApp direto para resolver bloqueios no momento em que aparecem.</p>
       </div>
     </div>
 
     <div class="rule fade-up d4" style="margin-bottom:clamp(1rem,2.5vh,1.5rem);"></div>
 
     <div class="fade-up d5">
-      <p class="label" style="color:#A8A8A0; margin-bottom:0.75rem;">Métricas entregues no relatório final</p>
+      <p class="label" style="color:var(--muted); margin-bottom:0.75rem;">Métricas entregues no relatório final</p>
       <div style="display:flex; flex-wrap:wrap; gap:0.35rem 0;">
         <span class="metric-item">Adoção semanal</span>
         <span style="color:#C8C8C0; margin:0 0.6rem;">·</span>
@@ -464,7 +492,10 @@
 <section class="slide" id="slide-4" aria-label="Investimento e próximos passos">
 
   <div class="flex items-center justify-between">
-    <span class="label fade-up" style="color:#A8A8A0;">GenDoc</span>
+    <div class="fade-up flex items-center gap-2">
+      <svg width="20" height="21" aria-hidden="true"><use href="#gd-icon"/></svg>
+      <span class="logo-wordmark">GenDoc<span>AI</span></span>
+    </div>
     <span class="label fade-up d1" style="color:#C8C8C0;">05 / 05</span>
   </div>
 
@@ -472,35 +503,35 @@
     <h2 class="title fade-up d2" style="margin-bottom:clamp(1.5rem,4vh,2.75rem);">Investimento</h2>
 
     <div class="invest-grid">
-      <!-- Left: price + includes -->
+      <!-- Left -->
       <div>
         <p class="price fade-up d2">R$&nbsp;18.500</p>
-        <p class="fade-up d3" style="font-size:0.9rem; color:#6B6B6B; margin-top:0.6rem; margin-bottom:clamp(1.25rem,3vh,2rem);">
+        <p class="fade-up d3" style="font-size:0.9rem; color:var(--subtle); margin-top:0.6rem; margin-bottom:clamp(1.25rem,3vh,2rem);">
           Piloto completo de 1 mês&nbsp;&nbsp;·&nbsp;&nbsp;4 a 5 executivos&nbsp;&nbsp;·&nbsp;&nbsp;~R$&nbsp;3.700 por líder
         </p>
 
         <div class="rule fade-up d3" style="margin-bottom:clamp(1rem,2.5vh,1.5rem);"></div>
 
         <div class="fade-up d4">
-          <p class="label" style="color:#A8A8A0; margin-bottom:0.75rem;">Inclui</p>
-          <p class="body-sm" style="color:#6B6B6B; max-width:420px;">
+          <p class="label" style="color:var(--muted); margin-bottom:0.75rem;">Inclui</p>
+          <p class="body-sm" style="color:var(--subtle); max-width:420px;">
             Discovery 1:1, preparação customizada, workshop de ignição de 2h, quatro touch points semanais em grupo, suporte async via WhatsApp por 30 dias e relatório final de resultados com recomendação de próximos passos.
           </p>
         </div>
       </div>
 
-      <!-- Right: CTA panel -->
+      <!-- Right: CTA -->
       <div class="cta-panel fade-up d4">
-        <p class="label" style="color:#C2410C; margin-bottom:1rem;">Próximo passo</p>
-        <p style="font-size:clamp(0.95rem,1.5vw,1.15rem); font-weight:600; color:#0A0A0A; line-height:1.5; margin-bottom:clamp(1rem,3vh,1.75rem);">
+        <p class="label" style="color:var(--accent); margin-bottom:1rem;">Próximo passo</p>
+        <p style="font-size:clamp(0.95rem,1.5vw,1.15rem); font-weight:600; color:var(--ink); line-height:1.5; margin-bottom:clamp(1rem,3vh,1.75rem);">
           Alinhar com Lúcio Fernando, fechar escopo e iniciar o discovery na semana seguinte.
         </p>
 
         <div class="rule" style="background:#E0E0D8; margin-bottom:clamp(0.75rem,2vh,1.25rem);"></div>
 
-        <p class="label" style="color:#A8A8A0; margin-bottom:0.35rem;">Contato</p>
-        <p style="font-size:0.95rem; font-weight:600; color:#0A0A0A; line-height:1.4;">Vinícius</p>
-        <p style="font-size:0.85rem; color:#6B6B6B;">GenDoc</p>
+        <p class="label" style="color:var(--muted); margin-bottom:0.35rem;">Contato</p>
+        <p style="font-size:0.95rem; font-weight:600; color:var(--ink); line-height:1.4;">Vinícius</p>
+        <p style="font-size:0.85rem; color:var(--subtle);">GenDocAI</p>
       </div>
     </div>
   </div>
@@ -522,11 +553,7 @@
         if (!entry.isIntersecting) return;
         const idx = slides.indexOf(entry.target);
         if (idx === -1) return;
-
-        // Animate elements
         entry.target.querySelectorAll('.fade-up').forEach(el => el.classList.add('in'));
-
-        // Sync dot
         dots.forEach((d, i) => d.classList.toggle('active', i === idx));
         current = idx;
       });
@@ -540,7 +567,7 @@
     /* ── Navigate ── */
     function goTo(idx) {
       idx = Math.max(0, Math.min(slides.length - 1, idx));
-      slides[idx].scrollIntoView({ behavior: 'smooth' });
+      slides[idx].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
     }
 
     /* ── Dot clicks ── */
@@ -550,24 +577,24 @@
 
     /* ── Keyboard ── */
     document.addEventListener('keydown', e => {
-      const forward  = ['ArrowDown', 'ArrowRight', ' ', 'PageDown'];
-      const backward = ['ArrowUp',   'ArrowLeft',       'PageUp'];
-      if (forward.includes(e.key))  { e.preventDefault(); goTo(current + 1); }
-      if (backward.includes(e.key)) { e.preventDefault(); goTo(current - 1); }
+      const fwd = ['ArrowRight', 'ArrowDown', ' ', 'PageDown'];
+      const bwd = ['ArrowLeft',  'ArrowUp',        'PageUp'];
+      if (fwd.includes(e.key)) { e.preventDefault(); goTo(current + 1); }
+      if (bwd.includes(e.key)) { e.preventDefault(); goTo(current - 1); }
     });
 
     /* ── Swipe / touch ── */
-    let ty0 = 0, tx0 = 0;
+    let tx0 = 0, ty0 = 0;
     document.addEventListener('touchstart', e => {
-      ty0 = e.touches[0].clientY;
       tx0 = e.touches[0].clientX;
+      ty0 = e.touches[0].clientY;
     }, { passive: true });
 
     document.addEventListener('touchend', e => {
-      const dy = ty0 - e.changedTouches[0].clientY;
       const dx = tx0 - e.changedTouches[0].clientX;
-      if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 44) {
-        goTo(dy > 0 ? current + 1 : current - 1);
+      const dy = ty0 - e.changedTouches[0].clientY;
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 44) {
+        goTo(dx > 0 ? current + 1 : current - 1);
       }
     }, { passive: true });
 
