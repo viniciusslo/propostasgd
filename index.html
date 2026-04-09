@@ -370,6 +370,34 @@
       .price { font-size: 2.4rem; }
     }
 
+    /* ── Includes list (slide 5) ── */
+    .includes-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .includes-list li {
+      font-size: clamp(0.85rem, 1.15vw, 0.95rem);
+      color: var(--ink);
+      font-weight: 500;
+      line-height: 1.45;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+    .includes-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
     /* ── Pull quote (slide 2) ── */
     .moment-body {
       display: flex;
@@ -617,19 +645,19 @@
 
   <div style="width:100%;">
     <h2 class="title fade-up d2" style="margin-bottom:clamp(1.5rem,4vh,2.75rem);">
-      Do workshop ao hábito
+      Do workshop ao mindset AI-First
     </h2>
 
     <div class="outcomes-grid fade-up d3" style="margin-bottom:clamp(1.5rem,4vh,2.5rem);">
       <div>
         <div class="accent-bar" style="margin-bottom:1rem;"></div>
-        <h3 style="font-size:0.95rem; font-weight:600; color:var(--ink); margin-bottom:0.5rem;">Uso ativo do Claude Code e Cowork</h3>
+        <h3 style="font-size:0.95rem; font-weight:600; color:var(--ink); margin-bottom:0.5rem;">Claude Cowork inserido no dia a dia</h3>
         <p class="body-sm" style="color:var(--subtle);">Ambiente configurado, skills customizadas funcionando e pelo menos uma automação real do próprio trabalho rodando já no dia do workshop.</p>
       </div>
       <div>
         <div class="accent-bar" style="margin-bottom:1rem;"></div>
-        <h3 style="font-size:0.95rem; font-weight:600; color:var(--ink); margin-bottom:0.5rem;">Uma experiência de 30 dias</h3>
-        <p class="body-sm" style="color:var(--subtle);">Um hábito-âncora definido e acompanhado semanalmente, para a IA deixar de ser curiosidade e virar reflexo.</p>
+        <h3 style="font-size:0.95rem; font-weight:600; color:var(--ink); margin-bottom:0.5rem;">Uma experiência de 30 dias acompanhada</h3>
+        <p class="body-sm" style="color:var(--subtle);">Um hábito de uso definido no workshop e cultivado nos quatro touch points semanais, para a IA deixar de ser curiosidade e virar reflexo.</p>
       </div>
       <div>
         <div class="accent-bar" style="margin-bottom:1rem;"></div>
@@ -645,15 +673,13 @@
       <div style="display:flex; flex-wrap:wrap; gap:0.35rem 0;">
         <span class="metric-item">Adoção semanal</span>
         <span style="color:#C8C8C0; margin:0 0.6rem;">·</span>
-        <span class="metric-item">Horas economizadas auto-reportadas</span>
-        <span style="color:#C8C8C0; margin:0 0.6rem;">·</span>
         <span class="metric-item">Tarefas automatizadas</span>
         <span style="color:#C8C8C0; margin:0 0.6rem;">·</span>
         <span class="metric-item">Skills criadas</span>
         <span style="color:#C8C8C0; margin:0 0.6rem;">·</span>
         <span class="metric-item">NPS</span>
         <span style="color:#C8C8C0; margin:0 0.6rem;">·</span>
-        <span class="metric-item">Cases concretos para storytelling interno</span>
+        <span class="metric-item">Cases concretos para storytelling interno na Fidens</span>
       </div>
     </div>
   </div>
@@ -683,29 +709,21 @@
       <!-- Left -->
       <div>
         <p class="price fade-up d2">R$&nbsp;9.530</p>
-        <p class="fade-up d3" style="font-size:0.9rem; color:var(--subtle); margin-top:0.6rem; margin-bottom:clamp(1.25rem,3vh,2rem);">
-          Piloto completo de 1 mês&nbsp;&nbsp;·&nbsp;&nbsp;4 a 5 executivos&nbsp;&nbsp;·&nbsp;&nbsp;~R$&nbsp;2.120 por líder
+        <p class="fade-up d3" style="font-size:0.9rem; color:var(--subtle); margin-top:0.6rem;">
+          Preço piloto&nbsp;&nbsp;·&nbsp;&nbsp;5 executivos
         </p>
-
-        <div class="rule fade-up d3" style="margin-bottom:clamp(1rem,2.5vh,1.5rem);"></div>
-
-        <div class="fade-up d4">
-          <p class="label" style="color:var(--muted); margin-bottom:0.75rem;">Inclui</p>
-          <p class="body-sm" style="color:var(--subtle); max-width:420px;">
-            Discovery em grupo, preparação customizada, workshop de ignição de 2h, quatro touch points semanais em grupo, suporte async via WhatsApp por 30 dias e relatório final de resultados com recomendação de próximos passos.
-          </p>
-        </div>
       </div>
 
-      <!-- Right: Preço-piloto -->
+      <!-- Right: Incluso -->
       <div class="cta-panel fade-up d4">
-        <p class="label" style="color:var(--accent); margin-bottom:1rem;">Preço-piloto</p>
-        <p style="font-size:clamp(0.95rem,1.5vw,1.1rem); font-weight:600; color:var(--ink); line-height:1.5; margin-bottom:clamp(0.75rem,2vh,1.1rem);">
-          Este valor é exclusivo para o grupo-piloto de até 5 executivos.
-        </p>
-        <p class="body-sm" style="color:var(--subtle); line-height:1.6;">
-          Turmas futuras e escalas maiores são precificadas caso a caso, considerando formato, profundidade do acompanhamento e número de participantes.
-        </p>
+        <p class="label" style="color:var(--accent); margin-bottom:1rem;">Incluso</p>
+        <ul class="includes-list">
+          <li>Sessão de Discovery</li>
+          <li>Preparação do workshop customizado</li>
+          <li>Workshop de ignição de 2h</li>
+          <li>Quatro touch points semanais em grupo</li>
+          <li>Relatório final de resultados com recomendação de próximos passos</li>
+        </ul>
       </div>
     </div>
   </div>
